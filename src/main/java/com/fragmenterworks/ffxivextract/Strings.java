@@ -59,6 +59,7 @@ public class Strings {
     public static final String FILETYPE_FFXIV_MUSICINDEX = "FFXIV Music Archive Index (0c0000.win32.index)";
     public static final String FILETYPE_OGG = "OGG Vorbis File (.ogg)";
     public static final String FILETYPE_FFXIV_LOG = "FFXIV Log File (.log)";
+    public static final String FILETYPE_DQX_INDEX = "DQX Index File (.idx)";
 
     //Menu and Menu Items
     public static final String MENU_FILE = "File";

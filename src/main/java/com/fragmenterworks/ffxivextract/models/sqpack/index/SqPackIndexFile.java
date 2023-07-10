@@ -73,7 +73,7 @@ public class SqPackIndexFile implements IHashUpdateListener {
 		// Determine index file ID
 		var fileName = Paths.get(filePath).getFileName().toString();
 		var idPart = fileName.indexOf('.');
-		this.indexId = Integer.parseInt(fileName.substring(0, idPart), 16);
+		this.indexId = Integer.parseInt(fileName.substring(0, idPart).replaceAll("([a-z])", ""), 16);
 
 		// Determine platform and endianness
 		byte platform = FileTools.peek(filePath, 8, 1)[0];
@@ -101,7 +101,8 @@ public class SqPackIndexFile implements IHashUpdateListener {
 		Utils.getGlobalLogger().info("Index file {} parsed in {} ms", String.format("%06x", indexId), e);
 
 		// Set up dat file access
-		var datFileFormat = filePath.replace("index2", "dat%d");
+		var datFileFormat = filePath.replace("idx", "dat%d");
+		datFileFormat = datFileFormat.replace("index2", "dat%d");
 		datFileFormat = datFileFormat.replace("index", "dat%d");
 		correspondingDatFiles = new ArrayList<>();
 

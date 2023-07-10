@@ -279,8 +279,21 @@ public class FileManagerWindow extends JFrame implements TreeSelectionListener, 
                         return f.getName().endsWith(".index2") || f.isDirectory();
                     }
                 };
+                FileFilter filterDQX = new FileFilter() {
+
+                    @Override
+                    public String getDescription() {
+                        return Strings.FILETYPE_DQX_INDEX;
+                    }
+
+                    @Override
+                    public boolean accept(File f) {
+                        return f.getName().endsWith(".idx") || f.isDirectory();
+                    }
+                };
                 fileChooser.addChoosableFileFilter(filter);
                 fileChooser.addChoosableFileFilter(filter2);
+                fileChooser.addChoosableFileFilter(filterDQX);
 
                 fileChooser.setFileFilter(filter);
                 fileChooser.setAcceptAllFileFilterUsed(false);

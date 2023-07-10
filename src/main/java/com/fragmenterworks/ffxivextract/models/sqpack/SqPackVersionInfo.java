@@ -22,7 +22,8 @@ public class SqPackVersionInfo {
 			byte[] tmp = new byte[8];
 			file.read(tmp);
 			if (tmp[0] != 'S' || tmp[1] != 'q' || tmp[2] != 'P' || tmp[3] != 'a' || tmp[4] != 'c' || tmp[5] != 'k')
-				throw new Exception("Invalid SqPack header");
+				if (tmp[0] != 'S' || tmp[1] != 'M' || tmp[2] != 'P' || tmp[3] != 'K')
+					throw new Exception("Invalid SqPack header");
 			info.platformId = file.readByte();
 			file.skipBytes(3);
 			info.fileSize = file.readInt();
